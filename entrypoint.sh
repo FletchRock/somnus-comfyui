@@ -20,6 +20,7 @@ mkdir -p "$STORAGE_ROOT/input" "$STORAGE_ROOT/output" "$STORAGE_ROOT/user/defaul
 
 # Save ComfyUI default-profile settings and workflows persistently. The main user
 # directory stays local: it contains a live SQLite DB, locks and caches.
+mkdir -p /opt/ComfyUI/user
 LOCAL_DEFAULT=/opt/ComfyUI/user/default
 if [[ ! -L "$LOCAL_DEFAULT" ]]; then
   if [[ -d "$LOCAL_DEFAULT" ]]; then
