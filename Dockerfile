@@ -25,12 +25,16 @@ RUN set -eu; cd /opt/ComfyUI/custom_nodes; \
     git clone https://github.com/ethanfel/ComfyUI-MiniMaxH3-Contex-Loop.git; \
     git -C ComfyUI-MiniMaxH3-Contex-Loop checkout fd8d57f; \
     git clone https://github.com/rgthree/rgthree-comfy.git; \
-    git -C rgthree-comfy checkout d7297b4
+    git -C rgthree-comfy checkout d7297b4; \
+    git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git; \
+    git clone https://github.com/lihaoyun6/ComfyUI-llama-cpp_vlm.git
 
 # Build the Python environment into the image, never onto Global Storage.
 RUN set -eu; \
     python -m pip install -r /opt/ComfyUI/requirements.txt; \
     python -m pip install -r /opt/ComfyUI/custom_nodes/ComfyUI-KJNodes/requirements.txt; \
+    python -m pip install -r /opt/ComfyUI/custom_nodes/ComfyUI-VideoHelperSuite/requirements.txt; \
+    python -m pip install -r /opt/ComfyUI/custom_nodes/ComfyUI-llama-cpp_vlm/requirements.txt; \
     for path in \
       /opt/ComfyUI/custom_nodes/ComfyUI-Manager/requirements.txt \
       /opt/ComfyUI/custom_nodes/rgthree-comfy/requirements.txt; do \
